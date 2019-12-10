@@ -1,0 +1,9 @@
+C:\Users\837967\source\repos\Hello World\Hello World\bin\Debug\Hello World.exe.config
+C:\Users\837967\source\repos\Hello World\Hello World\bin\Debug\Hello World.exe
+C:\Users\837967\source\repos\Hello World\Hello World\bin\Debug\Hello World.pdb
+C:\Users\837967\source\repos\Hello World\Hello World\obj\Debug\Hello World.csprojAssemblyReference.cache
+C:\Users\837967\source\repos\Hello World\Hello World\obj\Debug\Hello_World.frmMain.resources
+C:\Users\837967\source\repos\Hello World\Hello World\obj\Debug\Hello_World.Properties.Resources.resources
+C:\Users\837967\source\repos\Hello World\Hello World\obj\Debug\Hello World.csproj.GenerateResource.cache
+C:\Users\837967\source\repos\Hello World\Hello World\obj\Debug\Hello World.exe
+C:\Users\837967\source\repos\Hello World\Hello World\obj\Debug\Hello World.pdb

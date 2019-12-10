@@ -1,0 +1,9 @@
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\bin\Debug\Chicken or Egg.exe.config
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\bin\Debug\Chicken or Egg.exe
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\bin\Debug\Chicken or Egg.pdb
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\obj\Debug\ChickenOrEgg.csprojAssemblyReference.cache
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\obj\Debug\Chicken_or_Egg.frmMain.resources
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\obj\Debug\Chicken_or_Egg.Properties.Resources.resources
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\obj\Debug\ChickenOrEgg.csproj.GenerateResource.cache
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\obj\Debug\Chicken or Egg.exe
+C:\Users\837967\source\repos\Chicken or Egg\Chicken or Egg\obj\Debug\Chicken or Egg.pdb
