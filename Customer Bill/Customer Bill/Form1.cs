@@ -22,7 +22,8 @@ namespace Customer_Bill
     {
         // Declare the constant variables to be used throughout different calculations
 
-        const double rateRes = 0.052; // Residential Usage per kwh
+        
+        const double RATE_RES = 0.052; // Residential Usage per kwh
         const double rateCom = 0.045; // Commercial Usage per kwh (more than 1000 kwh)
         const int baseComRate = 60; // Flat rate for commercial usage (o to 1000 kwh)
         const int baseIndusPeakRate = 76; // Flat rate for Industrial Peak usage (o to 1000 kwh)
@@ -38,80 +39,78 @@ namespace Customer_Bill
         // Calculate button - performs calculation depends on customer and input value
         private void btnCaluculate_Click(object sender, EventArgs e)
         {
+            double inputRes; // Residential usage input converted to double from String
+            double calculateRes; // Residential Final Bill Amount
+            double inputCom; // Commercial usage input converted to double from String
+            double calculateCom; // Commercial Final Bill Amount
 
-            if (Validator.IsPresent(txtInput, "Input") &&
-                Validator.IsNonNegativeInt32(txtInput, "Input") &&
-                Validator.Present(txtOffPeakInput, "Off Peak Input") &&
-                Validator.NonNegativeInt32(txtOffPeakInput, "Off Peak Input")
-              )
+            // Residential button condition(if) - performs calculation for Resdential customer
+            if (btnResidential.Checked && Validator.IsValidData(txtInput))
             {
-                double inputRes = Convert.ToDouble(txtInput.Text); // Residential usage input converted to double from String
-                double calculateRes; // Residential Final Bill Amount
-                double inputCom = Convert.ToDouble(txtInput.Text); // Commercial usage input converted to double from String
-                double calculateCom; // Commercial Final Bill Amount
+                inputRes = Convert.ToDouble(txtInput.Text);
+                calculateRes = ResBill(inputRes);
+
+                lblResult.Text = calculateRes.ToString("c"); // display the bill in currency format
+            }
+
+            // Commercial RadioButton checked condition(else if) - performs calculation for Commercial customer
+            if (btnCommercial.Checked && Validator.IsValidData(txtInput))
+            {
+                inputCom = Convert.ToDouble(txtInput.Text);
+                if (inputCom <= 1000) // setting a base line for usage
+                {
+                    calculateCom = baseComRate; // flat rate applied to the base line usage
+                    lblResult.Text = calculateCom.ToString("c"); // display the bill in currency format
+                }
+
+                else if (inputCom > 1000) // Any usage greater than base line
+                {
+                    inputCom -= 1000; // Usage above the base line(1000)
+                    calculateCom = ComBill(inputCom);
+                    lblResult.Text = calculateCom.ToString("c"); // display the bill in currency format
+                }
+            }
+
+
+            // Industrial RadioButton checked condition(else if) - performs calculation for industrial customer
+            if (btnIndustrial.Checked && Validator.IsValidData(txtInput) && Validator.IsValidData(txtOffPeakInput))
+            {
                 double inputPeakIndus = Convert.ToDouble(txtInput.Text); // Industrial usage input converted to double from String
                 double calculatePeakIndus = 0; // Peak hours Bill Amount
                 double inputOffPeakIndus = Convert.ToDouble(txtOffPeakInput.Text);
                 double calculateOffPeakIndus = 0; // Off Peak hours Bill Amount
-                // Residential button condition(if) - performs calculation for Resdential customer
-                if (btnResidential.Checked)
-                {
-                    calculateRes = ResBill(inputRes);
 
-                    lblResult.Text = calculateRes.ToString("c"); // display the bill in currency format
+                if (inputPeakIndus <= 1000)
+                {
+                    calculatePeakIndus = baseIndusPeakRate;
                 }
-                
-                // Commercial RadioButton checked condition(else if) - performs calculation for Commercial customer
-                else if (btnCommercial.Checked)
+                else if (inputPeakIndus > 1000)
                 {
-                    if (inputCom <= 1000) // setting a base line for usage
-                    {
-                        calculateCom = baseComRate; // flat rate applied to the base line usage
-                        lblResult.Text = calculateCom.ToString("c"); // display the bill in currency format
-                    }
-
-                    else if (inputCom > 1000) // Any usage greater than base line
-                    {
-                        inputCom -= 1000; // Usage above the base line(1000)
-                        calculateCom = ComBill(inputCom);
-                        lblResult.Text = calculateCom.ToString("c"); // display the bill in currency format
-                    }
+                    inputPeakIndus -= 1000;
+                    calculatePeakIndus = peakBill(inputPeakIndus);
                 }
 
-                
 
-                // Industrial RadioButton checked condition(else if) - performs calculation for industrial customer
-                else if (btnIndustrial.Checked)
+
+                if (inputOffPeakIndus <= 1000)
                 {
-                    if (inputPeakIndus <= 1000)
-                    {
-                        calculatePeakIndus = baseIndusPeakRate;
-                    }
-                    else if (inputPeakIndus > 1000)
-                    {
-                        inputPeakIndus -= 1000;
-                        calculatePeakIndus = peakBill(inputPeakIndus);
-                    }
-
-
-                    
-                    if (inputOffPeakIndus <= 1000)
-                    {
-                        calculateOffPeakIndus = baseIndusOffPeakRate;
-                    }
-                    else if (inputOffPeakIndus > 1000)
-                    {
-                        inputOffPeakIndus -= 1000;
-                        calculateOffPeakIndus = offPeakBill(inputOffPeakIndus);
-                    }
-
-
-                    double calculateIndus = calculatePeakIndus + calculateOffPeakIndus;
-                    lblResult.Text = calculateIndus.ToString("c");
+                    calculateOffPeakIndus = baseIndusOffPeakRate;
+                }
+                else if (inputOffPeakIndus > 1000)
+                {
+                    inputOffPeakIndus -= 1000;
+                    calculateOffPeakIndus = offPeakBill(inputOffPeakIndus);
                 }
 
+
+                double calculateIndus = calculatePeakIndus + calculateOffPeakIndus;
+                lblResult.Text = calculateIndus.ToString("c");
             }
+
         }
+    
+
+       
 
         private static double offPeakBill(double inputOffPeak)
         {
@@ -130,7 +129,7 @@ namespace Customer_Bill
 
         private static double ResBill(double inputR)
         {
-            return (rateRes * inputR) + 6;
+            return (RATE_RES * inputR) + 6;
         }
 
         private void btnResidential_CheckedChanged(object sender, EventArgs e)
@@ -140,7 +139,8 @@ namespace Customer_Bill
             label3.Visible = false;
         }
 
-        private void btnCommercial_CheckedChanged(object sender, EventArgs e)
+        private void btnCommercial_CheckedChanged(object 
+            sender, EventArgs e)
         {
             txtOffPeakInput.Enabled = false;
             txtOffPeakInput.Visible = false;
@@ -173,3 +173,4 @@ namespace Customer_Bill
         }
     }
 }
+
