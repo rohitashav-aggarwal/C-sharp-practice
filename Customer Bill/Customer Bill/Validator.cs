@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms; // for MessageBox
+using System.Windows.Forms;
 
 namespace Customer_Bill
 {
-    // repository of validation methods
+    // validation methods
     public static class Validator
     { 
         public static bool Present(TextBox tb)
         {
-            bool valid = true; // "innocent until proven guilty"
-            if (tb.Text == "") // "bad dog"
+            bool valid = true; // initially true
+            if (tb.Text == "") // if input field empty
             {
-                valid = false;
+                valid = false; // if field is empty
+                // depending on input type, message changes
                 if (tb.Name == "txtInput")
                 {
                     MessageBox.Show("Input is required ", "Input Error");
@@ -36,6 +37,7 @@ namespace Customer_Bill
             if (!Int32.TryParse(tb.Text, out val)) // not an int
             {
                 valid = false;
+                // depending on input type, message changes
                 if (tb.Name == "txtInput") {
                     MessageBox.Show("Input must be  a whole number", "Input Error"); }
                 else
@@ -46,17 +48,23 @@ namespace Customer_Bill
                 tb.Focus();
             }
             
-            else if (val < 0) // negetive
+            else if (val < 0) // negative value validation
             {
                 valid = false;
-                if (tb.Name == "txtInput") {MessageBox.Show("Input must be positive or zero"); }
-                else { MessageBox.Show("Off Peak Input must be positive or zero", "Input Error"); }
+                if (tb.Name == "txtInput") {
+                    MessageBox.Show("Input must be positive or zero", "Input Error"); 
+                }
+                else { 
+                    MessageBox.Show("Off Peak Input must be positive or zero", "Input Error"); 
+                }
                 tb.SelectAll();
                 tb.Focus();
             }
 
             return valid;
         }
+
+        // All methods inside this function to be used in validating the form
          public static bool IsValidData(TextBox tb) {
             return
                 Present(tb) &&
