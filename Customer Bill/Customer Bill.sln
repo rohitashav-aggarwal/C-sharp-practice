@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer Bill", "Customer B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerData", "CustomerData\CustomerData.csproj", "{0AB01414-ED6E-45D2-B855-327A40993AF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerDataTests", "CustomerDataTests\CustomerDataTests.csproj", "{6FAAFB6A-00E9-4275-9C54-B391683956D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0AB01414-ED6E-45D2-B855-327A40993AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AB01414-ED6E-45D2-B855-327A40993AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AB01414-ED6E-45D2-B855-327A40993AF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FAAFB6A-00E9-4275-9C54-B391683956D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FAAFB6A-00E9-4275-9C54-B391683956D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FAAFB6A-00E9-4275-9C54-B391683956D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FAAFB6A-00E9-4275-9C54-B391683956D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

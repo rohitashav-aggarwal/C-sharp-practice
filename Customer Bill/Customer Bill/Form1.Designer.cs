@@ -376,42 +376,52 @@
             // lblTotalCust
             // 
             this.lblTotalCust.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTotalCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalCust.Location = new System.Drawing.Point(978, 455);
             this.lblTotalCust.Name = "lblTotalCust";
             this.lblTotalCust.Size = new System.Drawing.Size(264, 33);
             this.lblTotalCust.TabIndex = 29;
+            this.lblTotalCust.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblResCharges
             // 
             this.lblResCharges.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblResCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResCharges.Location = new System.Drawing.Point(978, 512);
             this.lblResCharges.Name = "lblResCharges";
             this.lblResCharges.Size = new System.Drawing.Size(264, 33);
             this.lblResCharges.TabIndex = 30;
+            this.lblResCharges.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblComCharges
             // 
             this.lblComCharges.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblComCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComCharges.Location = new System.Drawing.Point(978, 569);
             this.lblComCharges.Name = "lblComCharges";
             this.lblComCharges.Size = new System.Drawing.Size(264, 33);
             this.lblComCharges.TabIndex = 31;
+            this.lblComCharges.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTotalCharges
             // 
             this.lblTotalCharges.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTotalCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalCharges.Location = new System.Drawing.Point(978, 678);
             this.lblTotalCharges.Name = "lblTotalCharges";
             this.lblTotalCharges.Size = new System.Drawing.Size(264, 33);
             this.lblTotalCharges.TabIndex = 32;
+            this.lblTotalCharges.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblIndCharges
             // 
             this.lblIndCharges.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblIndCharges.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIndCharges.Location = new System.Drawing.Point(978, 625);
             this.lblIndCharges.Name = "lblIndCharges";
             this.lblIndCharges.Size = new System.Drawing.Size(264, 33);
             this.lblIndCharges.TabIndex = 33;
+            this.lblIndCharges.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
             // 
