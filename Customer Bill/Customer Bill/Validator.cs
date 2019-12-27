@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace Customer_Bill
 {
     // validation methods
-    public static class Validator
+    public static class Validator // bill must be calculated before adding the customer to the list
     {
         public static bool labelPresent(Label tb)
         {
@@ -24,7 +24,7 @@ namespace Customer_Bill
             return valid;
         }
 
-        public static bool IsPresent(TextBox tb)
+        public static bool IsPresent(TextBox tb) // fields must be present before calculating or adding
         {
             bool valid = true; // initially true
             if (tb.Text == "") // if input field empty
@@ -52,7 +52,7 @@ namespace Customer_Bill
             return valid;
         }
 
-        public static bool NonNegativeInt32(TextBox tb)
+        public static bool NonNegativeInt32(TextBox tb) // inputs must be positive whole number
         {
             bool valid = true;
             int val;
@@ -93,8 +93,6 @@ namespace Customer_Bill
 
             return valid;
         }
-
-
 
         // All methods inside this function to be used in validating the form
          public static bool IsValidData(TextBox tb) {

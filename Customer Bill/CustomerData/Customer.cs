@@ -7,23 +7,25 @@ using System.Threading.Tasks;
 
 namespace CustomerData
 {
-
     public class Customer
     {
+        // Customer data variables
         private string custName;
         private int cusAccNo;
         private char custType;
         private double custCharge;
+        // path where file will be created or stored
         string path = @"C:\Users\837967\source\repos\C_sharp_practice\Customer Bill\Customer Bill\bin\Debug\Customers.txt";
 
-        public Customer(){}
-        public Customer(string name, int AccNo, char type)
+        public Customer(){} // empty constructor
+        public Customer(string name, int AccNo, char type) // custructor for setting name, account and type
         {
             custName = name;
             cusAccNo = AccNo;
             custType = type;
         }
 
+        // get set method for all customer data
         public string getName()
         {
             return custName;
@@ -57,19 +59,20 @@ namespace CustomerData
         {
             custCharge = charge;
         }
+
+        // update file method to update customer data to the file
         public void updateFile(Customer cus)
         {
-            //string path = @"C:\Users\837967\source\repos\C_sharp_practice\Customer Bill\Customer Bill\bin\Debug\Customers.txt";
-
             using (FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
                     sw.WriteLine(cus.getName() + "," + cus.getAcc() + "," + cus.getCusType() + "," + cus.getCharge());
                 }
-                //FileStream fs = File.Create(path, 8);
             }
         }
+
+        // read file method to display the data
         public List<Customer> readFile()
         {
             List<Customer> data = new List<Customer>(); // create an empty list
@@ -92,8 +95,8 @@ namespace CustomerData
                 return data;
             }
         }
-       
-        public override string ToString() // for display
+
+        public override string ToString() //overridden ToString method for display
         {
             return custName + ", " + cusAccNo.ToString() + ", " + custType + ", " + custCharge;
         }

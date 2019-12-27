@@ -21,6 +21,7 @@ namespace Customer_Bill
 {
     public partial class Form1 : Form
     {
+        // initialized variables to record statistics
         private Char customerType;
         private int totalCustomers;
         private double totalCharges = 0;
@@ -33,7 +34,8 @@ namespace Customer_Bill
         {
             InitializeComponent();
         }
-        //Form1 t = new Form1();
+
+        // declared enumeration to record customer type
         public enum billType
         {
             Residential = 'R',
@@ -41,30 +43,31 @@ namespace Customer_Bill
             Industrial = 'I'
         }
 
-        // Calculate button - performs calculation depends on customer type and input value
+        // Calculate button - performs bill calculation depends on customer type and input value
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            double bill = 0;
+            double bill = 0; // initialize bill to zero
             
             Calculation cal = new Calculation();
             if (validate()) {
                 Customer cus = new Customer(txtName.Text, Convert.ToInt32(txtAccNo.Text), customerType);
-                if (customerType == 'R' || customerType == 'C')
+                if (customerType == 'R' || customerType == 'C') // if residential or commercial
                 {
                     bill = cal.CalculateCharge(cus, Convert.ToDouble(txtInput.Text));
                     lblResult.Text = bill.ToString("c");
                 }
                 else
-                {
+                { // else industrial
                     bill = cal.CalculateCharge(cus,
-                        Convert.ToDouble(txtInput.Text),
-                        Convert.ToDouble(txtOffPeakInput.Text));
-                    //cus.setCharge(bill);
+                           Convert.ToDouble(txtInput.Text),
+                           Convert.ToDouble(txtOffPeakInput.Text));
+                    // display result
                     lblResult.Text = bill.ToString("c");
                 }
             }
         }
 
+        // validate method to validate data before calculating
         public bool validate()
         {
             if (btnResidential.Checked || btnCommercial.Checked) 
@@ -84,7 +87,7 @@ namespace Customer_Bill
         // on selecting residential button
         private void btnResidential_CheckedChanged(object sender, EventArgs e)
         {
-            customerType = (char)billType.Residential;
+            customerType = (char)billType.Residential; // enum used 
             txtOffPeakInput.Enabled = false; // functionality off
             txtOffPeakInput.Visible = false; // visibility off
             label3.Visible = false; // visibility off
@@ -94,7 +97,7 @@ namespace Customer_Bill
         // on selecting commercial button
         private void btnCommercial_CheckedChanged(object sender, EventArgs e)
         {
-            customerType = (char)billType.Commercial;
+            customerType = (char)billType.Commercial; // enum used
             txtOffPeakInput.Enabled = false; // functionality off
             txtOffPeakInput.Visible = false; // visibility off
             label3.Visible = false; // visibility off
@@ -103,13 +106,14 @@ namespace Customer_Bill
         // on selecting industrial button
         private void btnIndustrial_CheckedChanged(object sender, EventArgs e)
         {
-            customerType = (char)billType.Industrial;
+            customerType = (char)billType.Industrial; // enum used
             txtOffPeakInput.Enabled = true; // functionality on
             txtOffPeakInput.Visible = true; // visibility on
             label3.Visible = true; // visibility on
         }
 
-        // When form loads focus on Residential button and Input
+        // When form loads focus on Residential button, Input and read data from the file and display
+        // calculate statistics
         private void Form1_Load(object sender, EventArgs e)
         {
             btnResidential.Checked = true;
@@ -119,7 +123,9 @@ namespace Customer_Bill
             List<Customer> customerList = customer.readFile();
             foreach (Customer c in customerList)
             {
+                // total charges
                 totalCharges = totalCharges + c.getCharge();
+                // individual charges
                 if(c.getCusType() == 'R')
                 {
                     resCharges = resCharges + c.getCharge();
@@ -134,21 +140,22 @@ namespace Customer_Bill
                 }
                 lstCustomer.Items.Add(c.ToString());
             }
+            // display statistics
             displayOnLoad();
         }
 
+        // on clicking add button, add data to the list and update statistics
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (validate() && Validator.labelPresent(lblResult))
             {
                 Customer c = new Customer(txtName.Text, Convert.ToInt32(txtAccNo.Text), customerType);
                 c.setCharge(Convert.ToDouble(lblResult.Text.Remove(0, 1)));
-                lstCustomer.Items.Add(c.ToString());
-                c.updateFile(c);
-                totalCustomers = lstCustomer.Items.Count;
-                //lblTotalCust.Text = Convert.ToString(totalCustomers);
-                totalCharges = totalCharges + c.getCharge();
-                //lblTotalCharges.Text = totalCharges.ToString("c");
+                lstCustomer.Items.Add(c.ToString()); // add to the list
+                c.updateFile(c); // update data
+                totalCustomers = lstCustomer.Items.Count; // update total customers statistics
+                totalCharges = totalCharges + c.getCharge(); // update total charges statistics
+                // update individual charges statistics
                 if (c.getCusType() == 'R')
                 {
                     resCharges = resCharges + c.getCharge();
@@ -162,9 +169,11 @@ namespace Customer_Bill
                     indCharges = indCharges + c.getCharge();
                 }
             }
+            // display statistics
             displayOnLoad();
         }
 
+        // display method to display statistics on the form
         private void displayOnLoad()
         {
             lblTotalCust.Text = lstCustomer.Items.Count.ToString();

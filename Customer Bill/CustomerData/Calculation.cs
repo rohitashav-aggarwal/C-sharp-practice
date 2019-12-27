@@ -59,23 +59,26 @@ namespace CustomerData
             return (RATE_RES * inputR) + 6;
         }
 
+        // Method call for calculating charge for industrial customers
         public double CalculateCharge(Customer cus, double usage, double offusage)
         {
            
-            double bill = CalculateCharge(cus, usage);
+            double bill = 0;
             if (cus.getCusType() == 'I')
             {
                 double peak = peakBill(usage);
                 double offpeak = offPeakBill(offusage);
-               bill =  peak+ offpeak;
+                bill =  Math.Round((offpeak + peak), 2);
             }
             return bill;
         }
+
+        // Method call for calculating charge for residential and commercial customers
         public double CalculateCharge(Customer cus, double usage)
         {
             double bill = 0;
    
-            // Residential button condition(if) - performs calculation for Resdential customer
+            // Residential/Commercial button condition(if) - performs calculation for Resdential customer
             if (cus.getCusType() == 'R')// button check
             {
                 bill = ResBill(usage); // calculate Residential bill
