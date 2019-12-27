@@ -1,8 +1,8 @@
 ﻿/*
  * @Author: Rohitashav Aggarwal
- * @Date: 12 December 2019
- * @Purpose: Calculating 3 Customer type Electricity Bills
- * @Class: CPRG-200 lab 1 - OOSD Program - SAIT
+ * @Date: 26 December 2019
+ * @Purpose: Calculating 3 Customer type Electricity Bills and storing customer data
+ * @Class: CPRG-200 lab 2 - OOSD Program - SAIT
 */
 
 

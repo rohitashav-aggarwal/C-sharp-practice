@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * @Author: Rohitashav Aggarwal
+ * @Date: 26 December 2019
+ * @Purpose: Calculating 3 Customer type Electricity Bills and storing customer data
+ * @Class: CPRG-200 lab 2 - OOSD Program - SAIT
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
