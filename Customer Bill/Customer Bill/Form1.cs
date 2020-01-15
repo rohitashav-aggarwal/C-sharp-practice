@@ -23,6 +23,7 @@ namespace Customer_Bill
 {
     public partial class Form1 : Form
     {
+        
         // initialized variables to record statistics
         private Char customerType;
         private int totalCustomers;
