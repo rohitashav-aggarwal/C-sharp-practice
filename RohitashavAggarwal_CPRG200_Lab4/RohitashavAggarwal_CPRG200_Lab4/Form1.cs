@@ -99,7 +99,7 @@ namespace RohitashavAggarwal_CPRG200_Lab4
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
-        private void UpdateShipDate(object sender, EventArgs e) // update ship date method
+        public void UpdateShipDate(object sender, EventArgs e) // update ship date method
         {
             try
             {
